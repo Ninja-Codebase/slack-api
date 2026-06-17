@@ -49,3 +49,64 @@ export interface UserStats {
   deleted: number;
   restricted: number;
 }
+
+export interface SlackChannel {
+  id: string;
+  name: string;
+  name_normalized?: string;
+  created?: number;
+  creator?: string;
+  is_archived?: boolean;
+  is_general?: boolean;
+  is_private?: boolean;
+  is_mpim?: boolean;
+  is_im?: boolean;
+  is_org_shared?: boolean;
+  is_pending_ext_shared?: boolean;
+  is_shared?: boolean;
+  is_channel?: boolean;
+  is_group?: boolean;
+  is_member?: boolean;
+  is_ext_shared?: boolean;
+  num_members?: number;
+  members?: string[];
+  topic?: {
+    value: string;
+    creator: string;
+    last_set: number;
+  };
+  purpose?: {
+    value: string;
+    creator: string;
+    last_set: number;
+  };
+  previous_names?: string[];
+  priority?: number;
+}
+
+export interface ConversationsListResponse {
+  ok: boolean;
+  channels?: SlackChannel[];
+  response_metadata?: {
+    next_cursor?: string;
+  };
+  error?: string;
+}
+
+export interface FetchChannelOptions {
+  limit?: number;
+  cursor?: string;
+  excludeArchived?: boolean;
+  types?: string; // 'public_channel', 'private_channel', 'mpim', 'im'
+}
+
+export interface ChannelStats {
+  total: number;
+  public: number;
+  private: number;
+  archived: number;
+  shared: number;
+  mpim: number;
+  im: number;
+  memberCount: number;
+}
