@@ -8,6 +8,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "channel": "ts-node src/channel.ts",
+    "usergroup": "ts-node src/usergroup.ts",
     "dev": "ts-node src/index.ts",
     "example": "ts-node src/example.ts",
     "test": "jest",

@@ -110,3 +110,53 @@ export interface ChannelStats {
   im: number;
   memberCount: number;
 }
+
+export interface SlackUsergroup {
+  id: string;
+  team_id: string;
+  is_usergroup: boolean;
+  name: string;
+  description?: string;
+  handle: string;
+  is_external: boolean;
+  date_create: number;
+  date_update: number;
+  date_delete: number;
+  auto_type: string | null;
+  created_by: string;
+  updated_by: string;
+  deleted_by: string | null;
+  prefs: {
+    channels: string[];
+    groups: string[];
+  };
+  user_count: string; // Number of users in the group
+  users?: string[]; // Populated when include_users is true
+}
+
+export interface UsergroupListResponse {
+  ok: boolean;
+  usergroups?: SlackUsergroup[];
+  error?: string;
+}
+
+export interface UsergroupUsersListResponse {
+  ok: boolean;
+  users?: string[];
+  error?: string;
+}
+
+export interface FetchUsergroupOptions {
+  includeCount?: boolean;
+  includeDisabled?: boolean;
+  includeUsers?: boolean;
+  teamId?: string;
+}
+
+export interface UsergroupStats {
+  total: number;
+  disabled: number;
+  external: number;
+  autoGroups: number;
+  totalMembers: number;
+}
